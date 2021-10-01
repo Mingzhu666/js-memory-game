@@ -271,21 +271,17 @@ function updateScore() {
   let { score, level, scoreDisplay, timerDisplay } = game;
   game.score = parseInt(scoreDisplay.innerHTML) + level * level * parseInt(timerDisplay.innerHTML.slice(0, -1)); 
   scoreDisplay.innerHTML = game.score;
-  // game.score = 1234;
-  // scoreDisplay.innerHTML = game.score;
-  // score = 1234;
-  // scoreDisplay.innerHTML = score;
 }
 
 function updateTimerDisplay() {
-  let { timer, timerDisplay, timerInterval, timerBar } = game; //L288 timerInterval为什么解构出来不能直接用，timer在晋级的时候出问题
+  let { timer, timerDisplay, timerInterval, timerBar } = game; 
   timerBar.style.width = '100%';
   game.timer = 60;
   timer = game.timer;
   timerDisplay.innerHTML = 60 + 's';
   clearInterval(game.timerInterval);
-  //timerInterval = setInterval(() => {
-  game.timerInterval = setInterval(() => {
+
+    game.timerInterval = setInterval(() => {
     if(timer > 0) {
       timer --;
       timerBar.style.width = `${timer/60*100}%`;
